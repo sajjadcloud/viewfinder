@@ -1,0 +1,10 @@
+apiVersion: beta/v1
+deploy:                               # (Required) Precisely one of 'buildpack', 'docker', 'skaffold' must be set.
+  docker:                             # Build Dockerfile and deploy.
+    file: Dockerfile                  # locates the Dockerfile relative to workspace. Defaults to 'Dockerfile'.
+    service: service                  # Name of a Service to create, so ingress can connect. Defaults to 'service'.
+    port: 8002                        # Port number to configure in the Service. Defaults to '8080'.
+ingress:                              # Ingress configures https endpoints.
+- service:  
+  serviceName: service                          # Name of a Service to connect. Defaults to 'service'
+  port: 8002                              # Port number of the service. Defaults to '8080'
